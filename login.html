@@ -322,10 +322,10 @@ function hideButton() {
       <button type="submit" onclick="openForm()">Log in</button>
     </div>
     <div class="form-popup" id="myForm">
-      <form class="form-inline" action="website.php">
-        <input type="username" id="username" placeholder="Username" name="username">
-        <input type="password" id="pwd" placeholder="Password" name="password">
-        <button type="submit">Let me in</button>
+      <form class="form-inline" method="POST" action="website.php">
+        <input type="username" name="username" placeholder="Username">
+        <input type="password" name="pwd" placeholder="Password">
+        <button type="submit" name="submit">Let me in</button>
       </form>
     </div>
   </div>

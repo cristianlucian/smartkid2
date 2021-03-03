@@ -2,69 +2,34 @@
 
 include_once 'test.php';
 
+if(isset($_POST['submit'])) {
 
-if(isset($_POST['Submit'])) {
+  $username = $_POST['username'];
+  $password = $_POST['pwd'];
 
-$Usernam = $_POST['username'];
-$Password = $_POST['pwd'];
+  $query = $con->prepare("select * from smartkid_users where Username = ? and Password = ?");
 
-$query = $con->prepare("select * from smartkid_users where Username = ? and Password = ?");
+  $success = $query->execute([$username, $password]);
 
-$success = $query->execute([$Usernam, $Password]);
 
-if($success){
-			$user = $query->fetch(PDO::FETCH_OBJ);
 
-			echo $user->ID .'<br>';
-			echo $user->Forename .'<br>';
-			echo $user->Surename .'<br>';
-			echo $user->Username .'<br>';
-			echo $user->Password .'<br>';
-			}else{
-				echo "No user found with these details";
-			}
+  echo ("<h1>Welcome, $username.</h1>");
+
+
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome</title>
-	<style>
-		table
-		{
-			border-collapse:collapse;
-			margin:0px auto;
-		}
-		table,th,td
-		{
-			border:1px solid black;
-			padding:5px;
-		}
-		.buttons
-		{
-			margin:auto;
-			width:50%;
-		}
-		form
-		{
-			display:inline;
-			padding:113px;
-		}
-		input
-		{
-			border:none;
-			cursor: pointer;
-			padding: 14px 28px;
-			background-color:#ee6f57;
-		}
-	</style>
+  <title>Welcome</title>
+  <style>
+  h1 {
+    text-align: center;
+  }
+  </style>
 </head>
 <body>
-
-        <?php
-        echo  $Usernam;
-		?>
 
 </body>
 </html>
