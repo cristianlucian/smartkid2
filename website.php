@@ -4,17 +4,17 @@ include_once 'test.php';
 
 
 if(isset($_POST['Submit'])) {
-    
-$Username = $_POST['Username']; 
-$Password = $_POST['Password'];
+
+$Usernam = $_POST['username'];
+$Password = $_POST['pwd'];
 
 $query = $con->prepare("select * from smartkid_users where Username = ? and Password = ?");
 
-$success = $query->execute([$Username, $Password]);
+$success = $query->execute([$Usernam, $Password]);
 
 if($success){
 			$user = $query->fetch(PDO::FETCH_OBJ);
-			
+
 			echo $user->ID .'<br>';
 			echo $user->Forename .'<br>';
 			echo $user->Surename .'<br>';
@@ -53,7 +53,7 @@ if($success){
 		}
 		input
 		{
-			border:none;	
+			border:none;
 			cursor: pointer;
 			padding: 14px 28px;
 			background-color:#ee6f57;
@@ -63,8 +63,8 @@ if($success){
 <body>
 
         <?php
-        echo ("<p>Hello $Username.</p>");
+        echo  $Usernam;
 		?>
-	
+
 </body>
 </html>
